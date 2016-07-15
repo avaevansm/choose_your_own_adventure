@@ -9,8 +9,18 @@ class AppTest < Minitest::Test
 
   def test_login
     response = post("/login")
-    binding.pry
     assert JSON.parse(response.body)["token"]
+  end
+
+  def test_token_unique
+    response1 = post("/login")
+    token = JSON.parse(response1.body)["token"]
+    binding.pry
+    assert_raises(StandardError) do
+      User.create!(token: token)
+    end
+
+
 
   end
 
