@@ -18,6 +18,8 @@ class AdventureGame < Sinatra::Base
 
 page_1 = Page.create(content: "This is the beginning of the story", option1: "Door1", option2: "Door2")
 
+user_names = {}
+
 
   before do
     content_type "application/json"
@@ -27,13 +29,13 @@ page_1 = Page.create(content: "This is the beginning of the story", option1: "Do
     token = SecureRandom.hex
 
     user = User.create(token: token)
-
+    puts "What is your user name?"
+    user_names[token] = "ava"
     user.to_json
   end
 
 
   #return status 403 unless valid?(token)
-
 
 
   get "/start" do

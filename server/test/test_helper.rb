@@ -4,6 +4,7 @@ ENV["RACK_ENV"] = "test"
 
 require "rubygems"
 require "bundler/setup"
+require "active_record"
 
 begin
   require "pry"
@@ -20,3 +21,4 @@ ActiveRecord::Base.establish_connection(
 )
 
 require_relative "../app"
+require_relative "../player"

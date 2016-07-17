@@ -1,5 +1,6 @@
 require_relative "test_helper"
 
+
 class AppTest < Minitest::Test
   include Rack::Test::Methods
 
@@ -19,10 +20,13 @@ class AppTest < Minitest::Test
     assert_raises(StandardError) do
       User.create!(token: token)
     end
-
-
-
   end
+
+def test_show_current_user
+  player1 = Player.new("Erik")
+  assert_equal player1.class.current_user, "Erik"
+
+end
 
 
 end
