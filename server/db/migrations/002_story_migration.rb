@@ -1,3 +1,5 @@
+require 'active_record'
+
 class StoryMigration < ActiveRecord::Migration
   def change
     create_table "pages" do |t|

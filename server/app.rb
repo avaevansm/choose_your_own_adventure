@@ -1,16 +1,16 @@
 ENV["RACK_ENV"] ||= 'development'
 
 require "rubygems"
-require "bundler/setup"
+
 require "sinatra/base"
 require "json"
-
 require "securerandom"
 require_relative "database_connection"
 require_relative "lib/adventure"
 
 require './lib/page'
-
+require "bundler/setup"
+require 'active_record'
 
 
 
@@ -29,8 +29,7 @@ user_names = {}
     token = SecureRandom.hex
 
     user = User.create(token: token)
-    puts "What is your user name?"
-    user_names[token] = "ava"
+
     user.to_json
   end
 
